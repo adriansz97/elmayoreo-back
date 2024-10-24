@@ -1,5 +1,5 @@
 import express from "express";
-import { acceptRequest, addInventoryQty, addNewProduct, createPayment, createRequest, getAllRequest, getAllRequestByUser, getInventory, getOutlaysByDate, getPaymentById, getPayments, getProductById, getReportByDate, getRequestInfo, getSuccessRequest, updateDeliveryDate } from "./database.js";
+import { verificarApiKey, acceptRequest, addInventoryQty, addNewProduct, createPayment, createRequest, getAllRequest, getAllRequestByUser, getInventory, getOutlaysByDate, getPaymentById, getPayments, getProductById, getReportByDate, getRequestInfo, getSuccessRequest, updateDeliveryDate } from "./database.js";
 import cors from "cors";
 import { DB_HOST, PORT } from "./config.js";
 
@@ -132,9 +132,14 @@ app.get("/outlays", async (req, res) => {
 
 
 
-
-
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT} ${DB_HOST} `);
 });
+
+
+
+app.get("api/products/", verificarApiKey, async (req, res) => {
+  await getInventory(res);
+});
+
+
