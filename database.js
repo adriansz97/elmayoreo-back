@@ -633,3 +633,16 @@ export async function getOutlaysByDate(res, startDate, endDate) {
     connection.release(); // Liberar la conexión
   }
 }
+
+//llave de verificacion
+export const verificarApiKey = (req, res, next) => {
+  const apiKey = req.headers['x-api-key']; // La API key debe estar en los headers
+  const apiKeySecreta = process.env.API_KEY_SECRETA || 'experimento626'; // Usar variable de entorno o clave fija
+
+  if (apiKey && apiKey === apiKeySecreta) {
+    next(); // Si la API key es válida, continúa
+  } else {
+    res.status(403).json({ mensaje: 'Acceso denegado: clave de acceso inválida.' });
+  }
+};
+
