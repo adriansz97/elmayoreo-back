@@ -1,7 +1,7 @@
 import express from "express";
 import { verificarApiKey, acceptRequest, addInventoryQty, addNewProduct, createPayment, createRequest, getAllRequest, getAllRequestByUser, getInventory, getOutlaysByDate, getPaymentById, getPayments, getProductById, getReportByDate, getRequestInfo, getSuccessRequest, updateDeliveryDate } from "./database.js";
 import cors from "cors";
-import { DB_HOST, DB_PORT } from "./config.js";
+import { DB_DATABASE, DB_HOST, PORT } from "./config.js";
 
 
 // El Mayorista desarrolla su API REST con Endpoints para 
@@ -132,8 +132,8 @@ app.get("/outlays", async (req, res) => {
 
 
 
-app.listen(DB_PORT, () => {
-  console.log(`Server running on port ${DB_PORT} ${DB_HOST} `);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT} ${DB_HOST} ${DB_DATABASE} `);
 });
 
 
