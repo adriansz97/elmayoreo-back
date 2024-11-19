@@ -155,7 +155,7 @@ export async function createRequest(res, products, user) {
     await connection.beginTransaction();
 
     // Insertar la solicitud con el status inicial 'pending'
-    const [requestResult] = await connection.query('INSERT INTO requests (status, user) VALUES (?, ?)', ['pending', user]);
+    const [requestResult] = await connection.query('INSERT INTO requests (status, userx) VALUES (?, ?)', ['pending', user]);
 
     const order_id = requestResult.insertId;
 
@@ -225,7 +225,7 @@ export async function getAllRequestByUser(res, user) {
 
   try {
     // Obtener todas las solicitudes de la tabla requests
-    const [requests] = await connection.query('SELECT * FROM requests WHERE user = ?', [user]);
+    const [requests] = await connection.query('SELECT * FROM requests WHERE userx = ?', [user]);
 
     console.log(requests);
 
