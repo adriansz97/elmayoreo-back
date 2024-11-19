@@ -133,7 +133,7 @@ app.get("/outlays", async (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT} ${DB_HOST} ${DB_DATABASE} `);
+  console.log(` Server running on port ${PORT} - ${DB_HOST} - ${DB_USER} - ${DB_PASSWORD} - ${DB_DATABASE} - ${DB_PORT}`);
 });
 
 
